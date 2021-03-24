@@ -1,0 +1,272 @@
+<html>
+   <head>
+      <style type="text/css">
+         body {
+         margin: 0;
+         padding: 0;
+         font: 12pt "Times New Roman";
+         }
+         table { page-break-inside:auto }
+		tr    { page-break-inside:initial; page-break-after:auto }
+		thead { display:table-header-group }
+		tfoot { display:table-footer-group }
+         * {
+         box-sizing: border-box;
+         -moz-box-sizing: border-box;
+         }
+         .page {
+         width: 21cm;
+         min-height: 29.7cm;
+         margin: 0cm auto;
+         background: white;
+         }
+         .subpage {
+         text-align: justify;
+         }
+         .footer {
+         position: fixed;
+         bottom: 0;
+         height: 3cm;
+         overflow: hidden;
+         }
+		 .header, .header-space,
+		.footer, .footer-space {
+		  height: 3cm;
+		}
+         .box-large {
+         display: inline-block;
+         width: 10cm;
+         }
+         td {
+         text-align: justify;
+         vertical-align: top;
+         }
+         #trans-details {
+         border-collapse: collapse;
+         width: 100%;
+         }
+         #trans-details td, #trans-details th {
+         border: 1px solid #ddd;
+         padding: 5px;
+         text-align: center;
+         }
+         #trans-details th {
+         padding-top: 12px;
+         padding-bottom: 12px;
+         text-align: left;
+         background-color: #008000;
+         color: white;
+         text-align: center;
+         }
+         @page {
+         size: A4;
+         }
+         @media print {
+         .page {
+		 margin: 0;
+         border: initial;
+         border-radius: initial;
+         box-shadow: initial;
+         background: initial;
+         page-break-after: always;
+         }
+      </style>
+   </head>
+   <body>
+      <table class="page">
+         <tbody>
+         <tr><td>
+                  <table class="subpage">
+					  <tbody>
+						<tr>
+                           <td>
+                              <div class="banner" style="height: 300px;">
+                                 <img src="banner_tita.png" style="width: 100%;height:100%;" />
+                              </div>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+							 <table width="100%" style="margin-bottom: 10px;">
+								<tr>
+								   <td style="width: 50%;">
+									  <table width="100%">
+										<tr>
+											<td style="width: 30%;">Tên KH</td>
+											<td>[param1]</td>
+										</tr>
+									  </table>
+								   </td>
+								   <td>
+									  <table width="100%">
+										<tr>
+											<td style="width: 30%;"> Customer's name:</td>
+											<td>[param1]</td>
+										</tr>
+									  </table>
+								   </td>
+								</tr>
+								<tr>
+								   <td>
+									<table width="100%">
+										<tr>
+											<td style="width: 30%;">Số hợp đồng:</td>
+											<td>[param2]</td>
+										</tr>
+									</table>
+								   </td>
+								   <td>
+									<table width="100%">
+										<tr>
+											<td style="width: 30%;">Contract no:</td>
+											<td>[param2]</td>
+										</tr>
+									</table>
+								   </td>
+								</tr>
+							 </table>
+							 <table width="100%">
+								<tr>
+								   <td style="width: 50%;padding-right: 5px;">
+									  <b>Ngân hàng TMCP Việt Nam Thịnh Vượng - VPBank xin chúc mừng Quý khách đã nhận được số tiền hoàn [param3] VND</b> từ chi tiêu bằng thẻ tín dụng {card_type_name} trong kỳ sao kê tháng {month_year_vn}
+								   </td>
+								   <td style=" padding-left: 5px;">
+									  <b>Vietnam Prosperity Bank - VPBank would like to congratulate you on cashback of [param3] VND</b> on purchases by {card_type_name} Creditcard in {month_year_en}
+								   </td>
+								</tr>
+							 </table>
+							 <br />
+							 <table width="100%">
+								<tr>
+								   <td style="width: 49%;height:80px;background-color:#d3d3d3;padding:5px;">
+									  <b>Ưu đãi hoàn tiền cho mọi chi tiêu ([notifi_max_cashback_vn]) là tính năng đặc biệt chỉ có ở thẻ tín dụng {card_type_name}</b>
+								   </td>
+								   <td style="width: 10px;"></td>
+								   <td style="width: 49%;background-color:#d3d3d3;padding:5px;">
+									  <b>Cash back on all purchases ([notifi_max_cashback_en]) is the special feature of {card_type_name} Creditcard</b>
+								   </td>
+								</tr>
+							 </table>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+                              <div style="width: 100%;margin-top: 10px;">
+                                 Chi tiết hoàn tiền của quý khách trong kỳ sao kê tháng {month_year_vn} như sau:
+                              </div>
+                              <div style="width: 100%;">
+                                 Your detailed cashback in {month_year_en}, as below:
+                              </div>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+							 <table id="trans-details">
+								<thead>
+								   <tr>
+									  <th>Nội dung chi tiêu/Content of spending</th>
+									  <th>Ngày/Date</th>
+									  <th style="width: 25%;">Số tiền giao dịch bằng ngoại tệ/Foreign transaction amount</th>
+									  <th style="width: 25%;">Số tiền giao dịch bằng nội tệ/Transaction amount in VND</th>
+								   </tr>
+								</thead>
+							   {details_item}
+							   <tr>
+								  <td colspan="2"><b>Tổng cộng theo số tiền chi tiêu nội /ngoại tệ</b><br /><i>/ Total Spending Amount by VND/Foreign</i></td>
+								  <td>{total_amt_ext}(A)</td>
+								  <td>{total_amt_vnd}(B)</td>
+							   </tr>
+							   <tr>
+								  <td colspan="2"><b>Tổng số tiền chi tiêu được hoàn tiền (=2xA+B)</b><br /><i>/ Total Spending Amount(=2xA+B)</i></td>
+								  <td colspan="2">{total_spending_amt}</td>
+							   </tr>
+							 </table>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+                              <div style="width: 100%;margin-top: 10px;">
+                                 Bảng kê chi tiết số tiền được hoàn/Detail of cashback spendrate:
+                              </div>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+							 <table id="trans-details">
+								<thead>
+								   <tr>
+									  <th style="width: 30%;">Tỉ lệ hoàn tiền (%) <br /> Cashback percentage(%)</th>
+									  <th style="width: 30%;">Tổng chi tiêu hoàn tiền (VND) <br /> Total Spending amount (VND)</th>
+									  <th style="width: 30%;">Số tiền hoàn theo tỷ lệ (VND) <br /> Cashback amount by rate(VND)</th>
+								   </tr>
+								</thead>
+							   {spend_rate_item}
+							   <tr>
+								  <td colspan="2"><b>Tổng số tiền hoàn tạm tính</b><br /><i>/ Actual Cashback Amount</i></td>
+								  <td>{total_actual_amt}</td>
+							   </tr>
+							   <tr>
+								  <td colspan="2"><b>Số tiền được hoàn trong kỳ sao kê ([notifi_max_cashback_vn])</b><br /><i>/ Cashback Amount in priod ([notifi_max_cashback_vn])</i></td>
+								  <td>{total_cashback_amt}</td>
+							   </tr>
+							 </table>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+                              <div style="width: 100%;margin-top: 10px;">
+                                 <b>Tổng số tiền được cashback trong tháng {month_year_vn} : {total_cashback_amt}</b>
+                              </div>
+							  <div style="width: 100%;">
+                                 <i>Total of cashback amount in {month_year_en} : {total_cashback_amt}</i>
+                              </div>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+                              <div style="width: 100%;margin-top: 10px;">
+                                 <b>Ghi chú:</b>
+                              </div>
+							  <div style="width: 100%;">
+                                 <i>Số tiền Quý khách được nhận trong tháng không vượt quá 2,000,000 VND theo thể lệ sử dụng sản phẩm. Các giao dịch trả góp và các giao dịch rút tiền mặt không được hoàn tiền. </i>
+                              </div>
+							  <div style="width: 100%;">
+                                 <i>Số tiền chi tiêu tối thiểu để được hoàn tiền trong tháng là 10,000,000 VND.</i>
+                              </div>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+                              <div style="width: 100%;margin-top: 10px;color:#adadad;">
+                                 <b>Note:</b>
+                              </div>
+							  <div style="width: 100%;color:#adadad;">
+                                 <i>You can receive maximum cashback of VND 2,000,000/month according to the product terms and conditions. Installment transactions and cash withdraw transactions are not refundable based on the characteristics of the Card product.</i>
+                              </div>
+							  <div style="width: 100%;color:#adadad;">
+                                 <i>The minimum spending amount for calculating the monthly cashback is 10,000,000 VND.</i>
+                              </div>
+                           </td>
+                        </tr>
+						<tr>
+                           <td>
+                              <div style="width: 100%;margin-top: 10px;text-align:center;padding:0px 30px; color:#008120;">
+                                 <b>Cảm ơn Quý khách đã sử dụng thẻ tín dụng {card_type_name}, rất mong Quý khách sẽ tiếp tục sử dụng dịch vụ để được hưởng mức tối đa những ưu đãi hoàn tiền chỉ có từ VPBank</b>
+                              </div>
+							  <div style="width: 100%;margin-top: 10px;text-align:center;padding:0px 30px; color:#696969;">
+                                 <b>Thank you for your trust and confidence in {card_type_name} Creditcard, VPBank hope that you will continue use it to get maximum cashback in next month</b>
+                              </div>
+                           </td>
+                        </tr>
+					  </tbody>
+				  </table>
+         </td></tr>
+		 </tbody>
+		 <tfoot><tr><td>
+			<div class="footer-space"></div>
+		  </td></tr></tfoot>
+      </table>
+	  
+	  <div class="footer"><img src="foot_other.png" style="width: 100%;" /></div>
+   </body>
+</html>
